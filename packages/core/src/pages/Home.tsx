@@ -36,7 +36,7 @@ function Home({ app }: IHome) {
         gap: '24px',
       }}
     >
-      {app ? renderFeatures(app) : 'Features'}
+      {app ? renderFeatures(app) : null}
     </Box>
   );
 }

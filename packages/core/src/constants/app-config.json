@@ -16,8 +16,8 @@
       },
       "features": [
         {
-          "name": "Issue DLP",
-          "type": "",
+          "name": "DLP",
+          "type": "EntryData",
           "id": "produce_product",
           "components": [
             {
@@ -26,37 +26,39 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "NLISID": {
-                      "type": "string",
-                      "title": "NLISID"
+                    "name": {
+                      "type": "string"
+                    },
+                    "age": {
+                      "type": "number"
                     }
                   }
                 },
                 "uiSchema": {
-                  "NLISID": {
-                    "ui:widget": "text"
-                  }
+                  "type": "Group",
+                  "label": "Information form",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/age"
+                    }
+                  ]
                 },
-                "formData": {
-                  "NLISID": "NLISID"
-                }
+                "onChange": {},
+                "initialData": {},
+                "className": "json-form",
+                "style": { "margin": "auto", "paddingTop": "160px", "width": "40%" }
               }
             },
             {
-              "name": "IssuerSelect",
+              "name": "CustomButton",
+              "type": "Submit",
               "props": {
-                "issuers": [
-                  {
-                    "name": "Farm",
-                    "id": "did:web:farm.example.com"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "Button",
-              "props": {
-                "label": "Issue DLP"
+                "style": { "textAlign": "center" }
               }
             }
           ],
@@ -66,43 +68,6 @@
               "parameters": []
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "Feedlot",
-      "type": "transition",
-      "features": [
-        {
-          "name": "Import DLP",
-          "id": "import_product",
-          "services": ["object_event"]
-        },
-        {
-          "name": "Feed Cattle",
-          "id": "aggregation_product",
-          "services": ["aggregation_event"]
-        },
-        {
-          "name": "Sell Cattle",
-          "id": "export_product",
-          "services": ["transaction_event"]
-        }
-      ]
-    },
-    {
-      "name": "Processor",
-      "type": "transformation",
-      "features": [
-        {
-          "name": "Import DLP",
-          "id": "import_product",
-          "services": ["object_event"]
-        },
-        {
-          "name": "Process Cattle",
-          "id": "transform_product",
-          "services": ["transformation_event"]
         }
       ]
     }

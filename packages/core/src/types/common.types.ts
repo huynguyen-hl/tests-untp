@@ -10,6 +10,19 @@ export interface IApp {
   type: string;
   features: IFeature[];
 
-  assets?: any;
-  styles?: any;
+  assets: IAssets;
+  styles: IStyles;
+}
+
+export interface IAssets {
+  logo: string;
+  brandTitle: string;
+  passportVC: string;
+  transactionEventVC: string;
+}
+
+export interface IStyles {
+  primaryColor: string;
+  secondaryColor: string;
+  tertiaryColor: string;
 }

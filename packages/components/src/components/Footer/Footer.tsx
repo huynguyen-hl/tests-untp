@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 interface IProps {
   textColor?: string;
@@ -13,17 +13,17 @@ export const Footer = ({ textColor = '#000', backgroundColor = '#fff' }: IProps)
   const currentYear = new Date().getFullYear();
 
   return (
-    <Box
+    <Container
       sx={{
+        marginTop: 'auto',
         textAlign: 'center',
         position: 'fixed',
         bottom: 0,
-        width: '100%',
         color: textColor,
         backgroundColor,
       }}
     >
       <Typography>Copyright © {currentYear}</Typography>
-    </Box>
+    </Container>
   );
 };

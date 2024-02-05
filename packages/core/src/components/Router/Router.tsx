@@ -11,7 +11,8 @@ function Router() {
     // Define the root routing container using React Router's Routes component
     <Routes>
       {/* Default route for the home page, rendering the Home component */}
-      <Route path='/' element={<Home />} />,{/* Catch-all route for any unknown paths, redirecting to the 404 page */}
+      <Route path='/' element={<Home />} />,
+      {/* Catch-all route for any unknown paths, redirecting to the 404 page */}
       <Route path='*' element={<Navigate to='/404' />} />,
       {/* Iterate through the appConfig to dynamically generate routes */}
       {appConfig.apps.map((app: any) => {
