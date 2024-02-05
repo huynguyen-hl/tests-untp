@@ -29,6 +29,7 @@ export const JsonForm = ({ schema, uiSchema, initialData, onChange, className, .
 
   const handleChange = ({ errors, data }: { errors: any[]; data: any }) => {
     setData(data);
+    if (typeof onChange !== 'function') return;
     errors.length > 0 ? onChange({ data, errors }) : onChange({ data });
   };
 
