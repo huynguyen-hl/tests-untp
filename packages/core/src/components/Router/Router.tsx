@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import appConfig from '../../constants/app-config.json';
-import { GenericPage, Home } from '../../pages';
-import { IFeature } from '../../types/common.types';
+import { Home } from '../../pages';
+import GenericPage from '../../pages/GenericPage';
 import { convertStringToPath } from '../../utils';
+import { IFeature } from '../../types/common.types';
 
 function Router() {
   return (
@@ -29,9 +30,10 @@ function Router() {
 
         // Create a React Router Route for the main path, rendering the main element and its child routes
         return (
-          <Route key={mainPath} path={mainPath} element={mainElement}>
+          <>
+            <Route key={mainPath} path={mainPath} element={mainElement}></Route>
             {childRoutes}
-          </Route>
+          </>
         );
       })}
     </Routes>
