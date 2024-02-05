@@ -23,7 +23,7 @@ function Header() {
   };
 
   const renderMenuByScreenType = (screenType: string) => {
-    return appConfig.apps.map((app) => {
+    return appConfig.apps.map((app: any) => {
       const route = `/${convertStringToPath(app.name)}`;
 
       if (screenType === 'mobile') {

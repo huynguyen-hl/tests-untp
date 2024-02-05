@@ -2,23 +2,10 @@ import React from 'react';
 import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { convertStringToPath } from '../utils';
-import { IGenericFeatureProps } from '../components/GenericFeature';
+import { IApp, IFeature } from '../types/common.types';
 
 export interface IHome {
   app?: IApp;
-}
-
-export interface IApp {
-  name: string;
-  type: string;
-  assets?: any,
-  styles?: any,
-  features: IFeature[];
-}
-
-export interface IFeature extends IGenericFeatureProps {
-  name: string;
-  id: string;
 }
 
 function Home({ app }: IHome) {

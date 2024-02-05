@@ -1,0 +1,110 @@
+{
+  "apps": [
+    {
+      "name": "Farm",
+      "type": "producer",
+      "assets": {
+        "logo": "https://example.com/logo.png",
+        "brandTitle": "Wagu Wonder",
+        "passportVC": "",
+        "transactionEventVC": ""
+      },
+      "styles": {
+        "primaryColor": "green",
+        "secondaryColor": "white",
+        "tertiaryColor": "black"
+      },
+      "features": [
+        {
+          "name": "Issue DLP",
+          "type": "",
+          "id": "produce_product",
+          "components": [
+            {
+              "name": "JsonForm",
+              "props": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "NLISID": {
+                      "type": "string",
+                      "title": "NLISID"
+                    }
+                  }
+                },
+                "uiSchema": {
+                  "NLISID": {
+                    "ui:widget": "text"
+                  }
+                },
+                "formData": {
+                  "NLISID": "NLISID"
+                }
+              }
+            },
+            {
+              "name": "IssuerSelect",
+              "props": {
+                "issuers": [
+                  {
+                    "name": "Farm",
+                    "id": "did:web:farm.example.com"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Button",
+              "props": {
+                "label": "Issue DLP"
+              }
+            }
+          ],
+          "services": [
+            {
+              "name": "getFormInfo",
+              "parameters": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Feedlot",
+      "type": "transition",
+      "features": [
+        {
+          "name": "Import DLP",
+          "id": "import_product",
+          "services": ["object_event"]
+        },
+        {
+          "name": "Feed Cattle",
+          "id": "aggregation_product",
+          "services": ["aggregation_event"]
+        },
+        {
+          "name": "Sell Cattle",
+          "id": "export_product",
+          "services": ["transaction_event"]
+        }
+      ]
+    },
+    {
+      "name": "Processor",
+      "type": "transformation",
+      "features": [
+        {
+          "name": "Import DLP",
+          "id": "import_product",
+          "services": ["object_event"]
+        },
+        {
+          "name": "Process Cattle",
+          "id": "transform_product",
+          "services": ["transformation_event"]
+        }
+      ]
+    }
+  ]
+}

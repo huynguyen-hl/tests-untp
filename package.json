@@ -7,9 +7,10 @@
   ],
   "scripts": {
     "start": "cd packages/core && pnpm start",
-    "build": "pnpm build:components && pnpm build:services",
+    "build": "pnpm run build-clean && pnpm build:components && pnpm build:services",
     "build:components": "cd packages/components && pnpm run build",
     "build:services": "cd packages/services && pnpm run build",
+    "build-clean": "rimraf ./packages/*/tsconfig.tsbuildinfo",
     "test": "pnpm run test:components",
     "test:components": "cd packages/components && pnpm run test",
     "storybook": "pnpm run storybook:components",
@@ -36,6 +37,7 @@
     "lerna-changelog": "2.2.0",
     "prettier": "3.1.1",
     "pretty-quick": "3.1.3",
+    "rimraf": "^5.0.5",
     "ts-jest": "29.1.1",
     "ts-node": "10.9.2",
     "typescript": "5.1.6"
