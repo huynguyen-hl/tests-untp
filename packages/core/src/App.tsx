@@ -1,13 +1,12 @@
 import React from 'react';
-import GenericPage from './pages/GenericPage';
-import './App.css';
-import { componentsData, services } from './constant';
+import { BrowserRouter } from 'react-router-dom';
+import { Layout } from './pages';
 
 function App() {
   return (
-    <div className='App'>
-      <GenericPage componentsData={componentsData} services={services} />
-    </div>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
   );
 }
 
