@@ -83,6 +83,7 @@ import React from 'react';
 import * as services from '@mock-app/services';
 // import * as events from '@mock-app/events';
 import { ComponentType, DynamicComponentRenderer, IDynamicComponentRendererProps } from './DynamicComponentRenderer';
+import { Status, ToastMessage, toastMessage } from '@mock-app/components';
 
 export interface IServiceDefinition {
   name: string;
@@ -120,7 +121,11 @@ export const GenericFeature: React.FC<IGenericFeatureProps> = ({ components, ser
       const prevResult = await previousResult;
       const service: any = getService(currentService.name);
       const params = [...prevResult, ...currentService.parameters];
-      const result: any = service(...params);
+      const result: any = await service(...params);
+      if (result) {
+        toastMessage({ status: Status.success, message: 'Successfully' });
+      }
+
       return [result];
     }, parameters);
   };
@@ -149,12 +154,16 @@ export const GenericFeature: React.FC<IGenericFeatureProps> = ({ components, ser
         }
 
         return (
-          <DynamicComponentRenderer
-            key={index}
-            name={component.name}
-            type={component.type}
-            props={{ ...props, ...component.props }}
-          />
+          <>
+            <DynamicComponentRenderer
+              key={index}
+              name={component.name}
+              type={component.type}
+              props={{ ...props, ...component.props }}
+            />
+
+            <ToastMessage />
+          </>
         );
       })}
     </div>

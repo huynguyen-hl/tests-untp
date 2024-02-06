@@ -136,6 +136,8 @@ export const objectEvent = async (data: JsonFormData, params: any) => {
       obj,
       DLR_API_KEY,
     );
+
+    return vc;
   } catch (error: any) {
     throw new Error(error);
   }
