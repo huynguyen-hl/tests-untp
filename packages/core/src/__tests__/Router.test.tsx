@@ -27,6 +27,14 @@ jest.mock(
   { virtual: true },
 );
 
+jest.mock('@mock-app/components', () => ({
+  Footer: jest.fn(),
+}));
+
+jest.mock('@mock-app/services', () => ({
+  getFormInfo: jest.fn(),
+}));
+
 describe('Router Component', () => {
   // Test case to check if the Router redirects to the 404 page for an invalid route
   it('renders route incorrectly', () => {

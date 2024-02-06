@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { materialRenderers, materialCells } from '@jsonforms/material-renderers';
+import { Typography } from '@mui/material';
 import { JsonForms } from '@jsonforms/react';
 import { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { IComponentFunc } from '../../types';
@@ -18,15 +19,16 @@ export interface IJsonFormProps extends IComponentFunc {
   uiSchema?: UISchemaElement;
   initialData?: any;
   className?: string;
+  formTitle?: string;
 }
 
 /**
  * Receive a json schema and render a form.
  * @returns {React.ReactElement} The rendered component.
  */
-export const JsonForm = ({ schema, uiSchema, initialData, onChange, className, ...props }: IJsonFormProps) => {
+export const JsonForm = ({ schema, uiSchema, initialData, onChange, formTitle, className, ...props }: IJsonFormProps) => {
   const [data, setData] = useState(initialData);
-
+console.log('formTitle', formTitle)
   const handleChange = ({ errors, data }: { errors: any[]; data: any }) => {
     setData(data);
     if (errors.length > 0) {
@@ -38,6 +40,15 @@ export const JsonForm = ({ schema, uiSchema, initialData, onChange, className, .
 
   return (
     <div className={className} {...props}>
+      <Typography
+        sx={{
+          paddingBottom: '40px',
+          fontSize: '1.5rem',
+        }}
+      >
+        {formTitle}
+      </Typography>
+
       <JsonForms
         schema={schema}
         uischema={uiSchema}

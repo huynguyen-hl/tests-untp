@@ -15,10 +15,12 @@ export const Footer = ({ textColor = '#000', backgroundColor = '#fff' }: IProps)
   return (
     <Container
       sx={{
-        marginTop: 'auto',
-        textAlign: 'center',
         position: 'fixed',
+        marginTop: '40px',
         bottom: 0,
+        left: 0,
+        right: 0,
+        textAlign: 'center',
         color: textColor,
         backgroundColor,
       }}
