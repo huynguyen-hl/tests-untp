@@ -28,7 +28,7 @@ export interface IJsonFormProps extends IComponentFunc {
  */
 export const JsonForm = ({ schema, uiSchema, initialData, onChange, formTitle, className, ...props }: IJsonFormProps) => {
   const [data, setData] = useState(initialData);
-console.log('formTitle', formTitle)
+
   const handleChange = ({ errors, data }: { errors: any[]; data: any }) => {
     setData(data);
     if (errors.length > 0) {
