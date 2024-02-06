@@ -66,7 +66,7 @@ export abstract class BaseEvent {
       type: this.vcType,
       vcKitAPIUrl: this.vcKitAPIUrl,
       credentialPayload,
-      ...restOfVC,
+      restOfVC: { ...restOfVC },
     });
 
     return credentialValue;

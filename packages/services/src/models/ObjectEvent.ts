@@ -114,7 +114,7 @@ export const objectEvent = async (data: JsonFormData, params: any) => {
       DLR_API_KEY,
     });
 
-    const vc = await obj.issueEvent({ credentialSubject: data, type: vcType });
+    const vc = await obj.issueEvent({ credentialSubject: data.data, type: vcType });
     const NLISID = data.data['herd']['NLIS'] as string;
 
     const vcUrl = await obj.storageEvent({

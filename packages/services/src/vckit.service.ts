@@ -32,12 +32,12 @@ export const integrateVckitIssueVC = async ({
   restOfVC,
   vcKitAPIUrl,
 }: IVcKitIssueVC): Promise<VerifiableCredential> => {
-  const body = constructCredentialObject({ context, type, issuer, credentialSubject, restOfVC });
+  const body = constructCredentialObject({ context, type, issuer, credentialSubject, ...restOfVC });
   const response = await publicAPI.post<VerifiableCredential>(`${vcKitAPIUrl}/credentials/issue`, body);
   return response;
 };
 
-const constructCredentialObject = ({ context, type, issuer, credentialSubject, restOfVC }: CredentialPayload) => {
+const constructCredentialObject = ({ context, type, issuer, credentialSubject, ...restOfVC }: CredentialPayload) => {
   return {
     credential: {
       '@context': [...contextDefault, ...(context || [])],
